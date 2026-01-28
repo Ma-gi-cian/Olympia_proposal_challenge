@@ -187,15 +187,15 @@ public:
   std::map<std::string, double> calculate() const override {
     double area = length_ * breadth_;
 
-    double permimeter = 2 * length_ * breadth_;
+    double perimeter = 2 * (length_ + breadth_);
 
-    return {{"area", area}, "perimeter", perimeter}
+    return {{"area", area}, {"perimeter", perimeter}};
   }
 
   private:
     double length_{0.0};
     double breadth_{0.0};
-}
+};
 
 
 REGISTER_GEOMETRY(Circle, "circle");
