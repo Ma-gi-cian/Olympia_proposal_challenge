@@ -91,7 +91,7 @@ public:
 
   std::map<std::string, double> calculate() const override {
     return {{"area", M_PI * std::pow(radius_, 2)},
-            {"circumference", 2 * M_PI * radius_}};
+            {"perimeter", 2 * M_PI * radius_}};
   }
 
 private:
@@ -124,7 +124,7 @@ public:
     double side = std::sqrt(std::pow(base_ / 2.0, 2) + std::pow(height_, 2));
     double perimeter = base_ + (2.0 * side);
 
-    return {{"area", area}, {"circumference", perimeter}};
+    return {{"area", area}, {"perimeter", perimeter}};
   }
 
 private:
@@ -156,17 +156,52 @@ public:
     double area = std::pow(side_length_, 2);
     double perimeter = 4 * side_length_;
 
-    return {{"area", area}, {"circumference", perimeter}};
+    return {{"area", area}, {"perimeter", perimeter}};
   }
 
 private:
   double side_length_{0.0};
 };
 
+class Rectangle : public Shape {
+public:
+  std::string getName() const override { return "Rectangle";}
+
+  std::string getDescription() const override {
+    return "Rectangle has 4 sides";
+  }
+
+  std::string getUsage() const override {
+    return "describe_object rectangle <length> <breadth>";
+  }
+
+  bool setDimensions(const std::vector<double> &dims) override {
+    if(dims.size() < 2 || dims[0] <= 0 || dims[1] <= 0){
+      return false;
+    }
+    length_ = dims[0];
+    breadth_ = dims[1];
+    return true;
+  }
+
+  std::map<std::string, double> calculate() const override {
+    double area = length_ * breadth_;
+
+    double permimeter = 2 * length_ * breadth_;
+
+    return {{"area", area}, "perimeter", perimeter}
+  }
+
+  private:
+    double length_{0.0};
+    double breadth_{0.0};
+}
+
 
 REGISTER_GEOMETRY(Circle, "circle");
 REGISTER_GEOMETRY(Triangle, "triangle");
 REGISTER_GEOMETRY(Square, "square");
+REGISTER_GEOMETRY(Rectangle, "rectangle");
 } 
 
 
