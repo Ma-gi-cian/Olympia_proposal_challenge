@@ -132,10 +132,41 @@ private:
   double height_{0.0};
 };
 
+class Square : public Shape {
+public:
+  std::string getName() const override { return "Square"; }
+
+  std::string getDescription() const override {
+    return "Square has 4 sides of equal length";
+  }
+
+  std::string getUsage() const override {
+    return "describe_object square <side_length>";
+  }
+
+  bool setDimensions(const std::vector<double> &dims) override {
+    if (dims.size() < 1 || dims[0] <= 0 ) {
+      return false;
+    }
+    side_length_ = dims[0];
+    return true;
+  }
+
+  std::map<std::string, double> calculate() const override {
+    double area = std::pow(side_length_, 2);
+    double perimeter = 4 * side_length_;
+
+    return {{"area", area}, {"circumference", perimeter}};
+  }
+
+private:
+  double side_length_{0.0};
+};
+
 
 REGISTER_GEOMETRY(Circle, "circle");
 REGISTER_GEOMETRY(Triangle, "triangle");
-
+REGISTER_GEOMETRY(Square, "square");
 } 
 
 
@@ -156,13 +187,11 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  // Display info if no dimensions provided
   if (argc == 2) {
     shape->displayInfo();
     return 0;
   }
 
-  // Parse dimensions from command line
   std::vector<double> dims;
   for (int i = 2; i < argc; ++i) {
     try {
@@ -173,7 +202,6 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  // Set dimensions and calculate
   if (!shape->setDimensions(dims)) {
     std::cerr << "Configuration Error!\nRequired: " << shape->getUsage()
               << "\n";
