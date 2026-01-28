@@ -3,7 +3,7 @@
 To build and run:
 
 ```
-bash run.sh
+g++ olympia_challenge.cpp -o describe_object
 ```
 
 For manual build:
