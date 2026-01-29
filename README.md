@@ -2,10 +2,9 @@
 
 A video demonstrating the working of this.
 
+![Describe Object](assets/describe_object_high_res.gif)
 
-<video src="assets/describe_object.mp4" controls width="800" autoplay loop muted playsinline>
-  <source src="assets/describe_object.mp4" type="video/mp4">
-</video>
+There is a video in the assets folder for you to have a better look at the commands.
 
 To build and run:
 
