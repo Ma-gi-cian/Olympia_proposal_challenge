@@ -2,7 +2,7 @@
 
 A video demonstrating the working of this.
 
-<img src="./assets/describe_object.gif" width="900px">
+<video src="./assets/screen_describe_object.mp4" width="100%" height="auto" autoplay loop muted playsinline></video>
 
 To build and run:
 
