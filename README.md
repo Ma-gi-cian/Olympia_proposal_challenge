@@ -2,7 +2,7 @@
 
 A video demonstrating the working of this.
 
-![Describe Object](./assets/describe_object.gif)
+<img src="./assets/describe_object.gif" width="900px">
 
 To build and run:
 
