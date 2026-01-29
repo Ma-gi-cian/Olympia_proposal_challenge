@@ -2,7 +2,10 @@
 
 A video demonstrating the working of this.
 
-<video src="./assets/screen_describe_object.mp4" width="100%" height="auto" autoplay loop muted playsinline></video>
+
+<video src="assets/describe_object.mp4" controls width="800" autoplay loop muted playsinline>
+  <source src="assets/describe_object.mp4" type="video/mp4">
+</video>
 
 To build and run:
 
